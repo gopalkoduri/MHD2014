@@ -13,7 +13,7 @@ div.size4 {
     height: 150px;
 }
 
-#navigation {
+#sound-browser {
    position:fixed;
    right:0px;
    bottom:0px;
@@ -21,7 +21,7 @@ div.size4 {
    width:491;
 }
 
-#content {
+#photo-browser {
     position: relative;
 }
 
