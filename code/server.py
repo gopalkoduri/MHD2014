@@ -8,24 +8,39 @@ app = Flask(__name__)
 api = Api(app)
 
 class GetMoreOf(Resource):
-    def __init__(self, prev_data, chosen_id, chosen_type):
-        self.prev_data = prev_data
-        self.chosen_id = chosen_id
-        self.chosen_type = chosen_type
-
-    def get(self):
+    def get(self, data):
         # tags = []
         # if self.chosen_type == "sound":
         #     tags = get_tags_for_sound(self.chosen_id)
         # elif self.chosen_type == "photo":
         #     tags = get_tags_for_image(self.chosen_id)
 
-        selected_tags = select_tags(self.prev_data, self.chosen_id)
+        image_ids = []
+        sound_ids = []
+        data = data.split(',')
 
-        tags = ''.join(selected_tags)
-        return get_sound(tags) + get_image(tags)
+        temp = data[-1].split(':')
+        chosen_type = temp[0]
+        chosen_id = temp[1]
 
-api.add_resource(GetMoreOf, '/<string:type>/<string:id>')
+        for i in data:
+            parts = i.split(':')
+            if parts[0] == 'p':
+                image_ids.append(parts[1])
+            else:
+                sound_ids.append(parts[1])
+
+        if chosen_type == 'p':
+            data = {id: get_tags_for_image(id) for id in image_ids}
+            selected_tags = select_tags(data, chosen_id)
+        else:
+            data = {id: get_tags_for_sound(id) for id in sound_ids}
+            selected_tags = select_tags(data, chosen_id)
+
+        tags = ' '.join(selected_tags)
+        return {'sounds': get_sound(tags), 'images': get_image(tags)}
+
+api.add_resource(GetMoreOf, '/<string:data')
 
 if __name__ == '__main__':
         app.run(debug=True)
