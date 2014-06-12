@@ -1,0 +1,60 @@
+<html xmlns="http://www.w3.org/1999/html">
+<head>
+    <link rel="stylesheet" href="css/base_layout.css">
+    <link rel="stylesheet" href="css/co-navigate.css">
+    <link rel="stylesheet" href="css/pure-release-0.5.0/pure-min.css">
+    <script src="/interface/js/isotope.pkgd.min.js"></script>
+</head>
+
+<body>
+
+<div id="wrapper">
+    <form id="photo-browser" class="pure-form">
+        <div id="photo_container" class="js-isotope inner"  data-isotope-options='{ "itemSelector": ".photo",
+        "layoutMode": "masonry" }'>
+            <div class="photo size1">
+                hello
+                <button type="submit" name="songid" value="<songid>" class="invisible">
+                    <img class='vote' src="/interface/images/thumbsup-small.png" />
+                </button>
+            </div>
+
+            <div class="photo size2"> hello2 </div>
+            <div class="photo size3"> hello3 </div>
+            <div class="photo size4"> hello4 </div>
+            <div class="photo size3"> hello5 </div>
+            <div class="photo size4"> hello6 </div>
+            <div class="photo size1"> hello7 </div>
+            <div class="photo size2"> hello8 </div>
+        </div>
+    </form>
+    <form id="sound-browser" class="pure-form">
+            <!--<div id="sound_container" class="js-isotope inner"  data-isotope-options='{ "itemSelector": ".sound",-->
+            <!--"layoutMode": "vertical", "vertical": {rowHeight: 96} }'>-->
+                <div class="sound">
+                    <iframe frameborder="0" scrolling="no" src="http://www.freesound.org/embed/sound/iframe/194170/simple/medium/"
+                            width="481" height="86"></iframe>
+                    <button type="submit" name="songid" value="<songid>" class="invisible">
+                        <img class='vote' src="/interface/images/thumbsup-small.png" />
+                    </button>
+                </div>
+
+                <div class="sound">
+                    <iframe frameborder="0" scrolling="no" src="http://www.freesound.org/embed/sound/iframe/194171/simple/medium/"
+                            width="481" height="86"></iframe>
+                </div>
+                <div class="sound">
+                    <iframe frameborder="0" scrolling="no" src="http://www.freesound.org/embed/sound/iframe/194172/simple/medium/"
+                            width="481" height="86"></iframe>
+                </div>
+                <div class="sound">
+                    <iframe frameborder="0" scrolling="no" src="http://www.freesound.org/embed/sound/iframe/194173/simple/medium/"
+                            width="481" height="86"></iframe>
+                </div>
+            <!--</div>-->
+    </form>
+</div>
+
+</body>
+
+</html>

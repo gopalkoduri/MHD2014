@@ -1,0 +1,48 @@
+div.size1, div.size2 {
+    width: 350px;
+    height: 350px;
+}
+
+div.size3 {
+    width: 250px;
+    height: 250px;
+}
+
+div.size4 {
+    width: 150px;
+    height: 150px;
+}
+
+#sound-browser {
+   position:fixed;
+   right:0px;
+   bottom:0px;
+   height:100%;
+   width:491;
+}
+
+#photo-browser {
+    position: relative;
+}
+
+.inner{
+    position: relative;
+    padding: 5px;
+}
+
+img.vote {
+    position:absolute;
+    top: 0px;
+    right: 14px;
+    width: 21px;
+    z-index: 1;
+}
+
+div.sound {
+    padding-bottom: 10px;
+}
+
+button.invisible{
+    border:none;
+    background-color:transparent;
+}
