@@ -1,0 +1,31 @@
+div.size1, div.size2 {
+    width: 350px;
+    height: 350px;
+}
+
+div.size3 {
+    width: 250px;
+    height: 250px;
+}
+
+div.size4 {
+    width: 150px;
+    height: 150px;
+}
+
+#navigation {
+   position:fixed;
+   right:0px;
+   bottom:0px;
+   height:100%;
+   width:491;
+   background:#999;
+}
+
+#content {
+    position: relative;
+}
+
+.inner{
+    padding: 5px;
+}
