@@ -19,7 +19,6 @@ div.size4 {
    bottom:0px;
    height:100%;
    width:491;
-   background:#999;
 }
 
 #content {
@@ -27,5 +26,23 @@ div.size4 {
 }
 
 .inner{
+    position: relative;
     padding: 5px;
+}
+
+img.vote {
+    position:absolute;
+    top: 0px;
+    right: 14px;
+    width: 21px;
+    z-index: 1;
+}
+
+div.sound {
+    padding-bottom: 10px;
+}
+
+button.invisible{
+    border:none;
+    background-color:transparent;
 }
