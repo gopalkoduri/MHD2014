@@ -2,5 +2,3 @@ Sentiment lexicons:
 http://crr.ugent.be/archives/1003
 http://sentiwordnet.isti.cnr.it/
 http://www.cs.uic.edu/~liub/FBS/sentiment-analysis.html
-
-
