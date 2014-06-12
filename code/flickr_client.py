@@ -1,8 +1,11 @@
 from settings import flickr_url
 from settings import flickr_token
+from memoize import memoized
+
 import requests
 import re
 import json
+
 
 _jsonp_remover = re.compile(r"\(|\)")
 def _to_json(text):
@@ -45,3 +48,8 @@ def get_image(tags, coord = None, radius = None):
 
         result.append(photo)
     return result
+
+@memoized
+def get_tags_for_image(image_id):
+    info = flickr_api_get_image_info(image_id)
+    return [t["_content"] for t in info["tags"]["tag"]]
