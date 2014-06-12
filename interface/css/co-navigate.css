@@ -13,16 +13,18 @@ div.size4 {
     height: 150px;
 }
 
-#sound-browser {
+#sound_container {
    position:fixed;
    right:0px;
    bottom:0px;
    height:100%;
-   width:491;
+   width:491px;;
 }
 
-#photo-browser {
+#photo_container {
     position: relative;
+    left: 0;
+    right: 491px;
 }
 
 .inner{
@@ -30,12 +32,14 @@ div.size4 {
     padding: 5px;
 }
 
-img.vote {
-    position:absolute;
+.click {
+    position:relative;
     top: 0px;
-    right: 14px;
-    width: 21px;
+    right:0px;
+    width: 48px;
+    height: 53px;
     z-index: 1;
+    background-image: url(/interface/images/thumbsup-small.png);
 }
 
 div.sound {
@@ -45,4 +49,8 @@ div.sound {
 button.invisible{
     border:none;
     background-color:transparent;
+}
+
+div.photo {
+    border: red 1px solid; !important
 }
