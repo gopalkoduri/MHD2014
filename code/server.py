@@ -7,14 +7,8 @@ from similarities import select_tags
 app = Flask(__name__)
 api = Api(app)
 
-class GetMoreOf(Resource):
+class CoNavigate(Resource):
     def get(self, data):
-        # tags = []
-        # if self.chosen_type == "sound":
-        #     tags = get_tags_for_sound(self.chosen_id)
-        # elif self.chosen_type == "photo":
-        #     tags = get_tags_for_image(self.chosen_id)
-
         image_ids = []
         sound_ids = []
         data = data.split(',')
@@ -40,7 +34,7 @@ class GetMoreOf(Resource):
         tags = ' '.join(selected_tags)
         return {'sounds': get_sound(tags), 'images': get_image(tags)}
 
-api.add_resource(GetMoreOf, '/<string:data')
+api.add_resource(CoNavigate, '/<string:data>')
 
 if __name__ == '__main__':
         app.run(debug=True)
