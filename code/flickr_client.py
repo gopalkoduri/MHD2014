@@ -1,6 +1,7 @@
 from settings import flickr_url
 from settings import flickr_token
 from memoize import memoized
+import similarities as sim
 
 import requests
 import re
@@ -48,6 +49,13 @@ def get_image(tags, coord = None, radius = None):
         photo["embed_url"] = "https://www.flickr.com/photos/" + photo["username"] + "/" + photo["id"] + "/player"
 
         result.append(photo)
+
+    #Sort the sounds by their relevance within the result set
+    g = sim.build_graph(result, similarity_threshold=0.3)
+    id_ranks = {y: x+1 for x, y in list(enumerate(sim.rank_relevance(g)))}
+    for i in result:
+        i['rank'] = id_ranks[i['id']]
+
     return result
 
 @memoized
