@@ -36,6 +36,7 @@ def get_image(tags, coord = None, radius = None):
     photos = flickr_api_get_image_list(tags)
     result = []
     for photo in photos:
+        #TODO: Does this function search in tags, description and everything?
         info = flickr_api_get_image_info(photo["id"])
         photo["username"] = info["owner"]["username"]
         photo["name"] = info["title"]["_content"]
