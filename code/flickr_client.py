@@ -21,7 +21,8 @@ def flickr_api_get_image_list(tags):
             text = tags,
             format = "json",
             per_page = 25,
-            sort = 'relevance'
+            sort = 'relevance',
+            extras = 'tags, farm, server, owner_name'
             )
     return _to_json(requests.get(flickr_url, params = payload).text)["photos"]["photo"]
 
@@ -43,14 +44,15 @@ def get_image(tags, coord = None, radius = None):
     result = []
     for photo in photos:
         #TODO: Does this function search in tags, description and everything?
-        info = flickr_api_get_image_info(photo["id"])
-        photo["username"] = info["owner"]["username"]
-        photo["name"] = info["title"]["_content"]
-        photo["tags"] = [t["_content"] for t in info["tags"]["tag"]]
-        photo["description"] = info["description"]["_content"]
-        username = unidecode(photo["username"]).replace(' ','-')
-        photo["embed_url"] = ("https://farm" + str(info["farm"]) + ".staticflickr.com/" +
-                str(info["server"]) + "/" + str(photo["id"]) + "_" + str(photo["secret"]) + ".jpg")
+        #info = flickr_api_get_image_info(photo["id"])
+        #photo["username"] = info["owner"]["username"]
+        #photo["name"] = info["title"]["_content"]
+        #photo["tags"] = [t["_content"] for t in info["tags"]["tag"]]
+        photo["tags"] = photo["tags"].split()
+        #photo["description"] = info["description"]["_content"]
+        username = unidecode(photo["ownername"]).replace(' ','-')
+        photo["embed_url"] = ("https://farm" + str(photo["farm"]) + ".staticflickr.com/" +
+                str(photo["server"]) + "/" + str(photo["id"]) + "_" + str(photo["secret"]) + ".jpg")
         result.append(photo)
 
     #Sort the sounds by their relevance within the result set
