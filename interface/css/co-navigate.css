@@ -47,7 +47,8 @@ div.sound {
 div.photo {
     position: relative;
     z-index: 1;
-    display: inline-block;
+    padding-left: 10px;
+    width: 300px;
 }
 
 .size0, .size1 {
