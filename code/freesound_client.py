@@ -15,7 +15,6 @@ def get_sound(tags, coord = None, radius = None):
 
     for sound in query_result.results:
         sound["embed_url"] = "http://www.freesound.org/embed/sound/iframe/" + str(sound["id"]) + "/simple/medium/"
-        sound["description"] = client.get_sound(sound["id"]).description
 
     #Sort the sounds by their relevance within the result set
     data = query_result.results

@@ -61,12 +61,23 @@ def select_tags(data, id):
     """
     data is a dictionary of id: tags format, and id is the id of the entity the user selected.
     """
-    tag_counter = Counter(concatenate(data.values()))
-    theme_tags = tag_counter.most_common(2)
+    print data.values()
+    if len(data.values()) > 1:
+        values = concatenate(data.values())
+    else:
+        values = data.values()[0]
+
+    tag_counter = Counter(values)
+    theme_tags = [t[0] for t in tag_counter.most_common(2)]
 
     picked_tags = data[id]
     data.pop(id)
-    picked_tags = set(picked_tags) - set(concatenate(data.values()))
+    if len(data.values()) > 1:
+        values = concatenate(data.values())
+    else:
+        values = data.values()[0]
+    picked_tags = set(picked_tags) - set(values)
 
-    theme_tags.extend(picked_tags)
+    if picked_tags:
+        theme_tags.extend(picked_tags)
     return theme_tags

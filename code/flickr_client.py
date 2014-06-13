@@ -2,6 +2,7 @@ from settings import flickr_url
 from settings import flickr_token
 from memoize import memoized
 import similarities as sim
+from unidecode import unidecode
 
 import requests
 import re
@@ -46,8 +47,9 @@ def get_image(tags, coord = None, radius = None):
         photo["name"] = info["title"]["_content"]
         photo["tags"] = [t["_content"] for t in info["tags"]["tag"]]
         photo["description"] = info["description"]["_content"]
-        photo["embed_url"] = "https://www.flickr.com/photos/" + photo["username"] + "/" + photo["id"] + "/player"
-
+        username = unidecode(photo["username"]).replace(' ','-')
+        photo["embed_url"] = ("https://farm" + str(info["farm"]) + ".staticflickr.com/" +
+                str(info["server"]) + "/" + str(photo["id"]) + "_" + str(photo["secret"]) + ".jpg")
         result.append(photo)
 
     #Sort the sounds by their relevance within the result set
