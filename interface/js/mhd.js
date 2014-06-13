@@ -1,15 +1,15 @@
 var current_elements = {images:[], sounds:[]}
 make_embed_sound = function(sound) {
     return "<div class=\"sound\" " + "id=\"" + sound.id + "\">" +
-        "<img src=\"/interface/images/thumbsup-small.png\" class=\"click\" onclick=\"click_element(" +sound.id + ")\"></div>" +
+        "<img width=\"32\" class=\"invisible\" src=\"/interface/images/thumbsup-small.png\" onclick=\"click_element(" +sound.id + ")\"></div>" +
            "<iframe frameborder=\"0\" scrolling=\"no\" src=\"" +
            sound.embed_url + "\" width=\"481\" height=\"86\"></iframe></div>";
 };
 
-make_embed_image = function(image) {
-    return "<div class=\"image\" " + " id=\"" +image.id + "\">" +
-        "<img src=\"/interface/images/thumbsup-small.png\" class=\"click\" onclick=\"click_element(" + image.id + ")\"></div>" +
-        "<img src=\"" + image.embed_url+ "\"></div>";
+make_embed_image = function(image, index) {
+    return "<div class=\"photo\" id=" + image.id + ">" +
+        "<img width=\"100%\" class=\"size" + index + "\" src=\"" + image.embed_url + "\""+
+        "onclick=\"click_element(" + image.id + ")\"/> </div>";
 }
 
 click_element = function(target) {
@@ -39,19 +39,45 @@ click_element = function(target) {
         type: "POST",
         data: JSON.stringify(current_ids),
         success: build_gui,
-        fail: function() { console.log("error getting moar sounds and images") }
+        fail: function() { console.log("error getting more sounds and images") }
     });
 }
+
+function shuffle(o){ //v1.0
+    for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
+    return o;
+};
 
 build_gui = function(data) {
     console.log(data);
     current_elements = data;
+
+    shuffled_images = shuffle(data.images.slice(0, 10));
+    console.log(shuffled_images);
     $("#photo_container").empty();
-    $.each(data.images, function(index, element) {
+    $.each(shuffled_images, function(index, element) {
         if (index < 10) {
-            $("#photo_container").append(make_embed_image(element));
+            $("#photo_container").append(make_embed_image(element, element.rank));
         }
     });
+
+    var wall = new freewall("#photo_container");
+    wall.reset({
+        selector: '.photo',
+        animate: true,
+        cellW: 160,
+        cellH: 'auto',
+        onResize: function() {
+            wall.fitWidth();
+        }
+    });
+
+    var images = wall.container.find('.photo');
+    images.find('img').load(function() {
+        wall.fitWidth();
+    });
+
+
     $("#sound_container").empty();
     $.each(data.sounds, function(index, element) {
         if (index < 10) {
