@@ -1,6 +1,6 @@
 .container {
    height: auto;
-   overflow: hidden;
+   top: 50px;
 }
 
 .right {
@@ -12,7 +12,6 @@
 .left {
     position: relative;
     width: auto;
-    overflow: hidden;
 }
 
 .inner{

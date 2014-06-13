@@ -13,30 +13,42 @@
       $("button").click(function(){
         $("div.landing_ribbon").animate({top:'0px'});
         document.getElementById("title").className = "title_top";
-        document.getElementById("landing").className = "landing_top";
-      });
+        document.getElementById("landing-background").className = "disabled";
+        console.log(query.value);
+        $.ajax({
+            settings: {
+                contentType: "application/json",
+                },
+                url:"http://localhost:5000/search",
+            type: "POST",
+            data: query.value,
+            success: build_gui,
+            fail: function() { console.log("error getting moar sounds and images") }
+        });
+      
+});
     });
     </script>
 </head>
 
 <body class="landing" id="landing">
+<div id="landing-background"></div>
 <div id="landing_wrapper">
     <div id="title" class="title">
         <img src="/interface/images/flisound.png" alt="Flisound" width="300px" />
     </div>
     <div class="landing_ribbon colored">
         <div id="landing_content">
-            <form action="" class="pure-form">
+            <form onsubmit="return false" class="pure-form">
                 <fieldset>
                     <legend><b>Where do we start?</b></legend>
-                    <input type="text" placeholder="Give us some tags">
+                    <input type="text" placeholder="Give us some tags" id="query">
                     <button type="submit" class="pure-button pure-button-primary">Go!</button>
 
                 </fieldset>
             </form>
         </div>
     </div>
-
     <div class="container">
         <div class="right" id="sound_container">
         </div>

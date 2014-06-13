@@ -1,13 +1,21 @@
-body.landing{
+body {
     font-family: Cantarell, Trebuchet MS;
+}
+#landing-background{
     background-image:  url(/interface/images/port.jpg);
     background-size:   cover;
     background-repeat: no-repeat;
-    transition: background 300ms ease-in 200ms;
+    transition: 300ms ease-in 200ms;
+    -webkit-transition: 300ms ease-in 200ms;
+    bottom:0;
+    top:0;
+    left:0;
+    right:0;
+    position:fixed;
 }
 
-body.landing_top{
-    background-color: #fff;
+#landing-background.disabled {
+    opacity: 0;
 }
 
 #landing_wrapper {

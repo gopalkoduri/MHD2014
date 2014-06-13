@@ -55,7 +55,11 @@ def get_image(tags, coord = None, radius = None):
     #Sort the sounds by their relevance within the result set
     g = sim.build_graph(result, similarity_threshold=0.3)
     id_ranks = {y: x+1 for x, y in list(enumerate(sim.rank_relevance(g)))}
+    print id_ranks
+    print result
     for i in result:
+        print i["id"]
+        print id_ranks[i["id"]]
         i['rank'] = id_ranks[i['id']]
 
     return result

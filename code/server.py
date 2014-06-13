@@ -11,6 +11,8 @@ api = Api(app)
 class RawSearch(Resource):
     def get(self):
         tags = request.form.keys()[0]
+        print tags
+        print [image["id"] for image in get_image(tags)]
         return {'sounds': get_sound(tags), 'images': get_image(tags)}, 200, {'Access-Control-Allow-Origin': '*'}
     post = get
 
@@ -19,7 +21,6 @@ class RawSearch(Resource):
         { 'Access-Control-Allow-Origin': '*', \
           'Access-Control-Allow-Methods' : 'PUT,GET' }
 
-        return
 class CoNavigate(Resource):
     def get(self, type, id):
         items= json.loads(request.form.keys()[0])
@@ -33,7 +34,6 @@ class CoNavigate(Resource):
         else:
             data = {int(id): get_tags_for_sound(id) for id in sound_ids}
             selected_tags = select_tags(data, chosen_id)
-        print selected_tags
         tags = ' '.join(selected_tags)
         return {'sounds': get_sound(tags), 'images': get_image(tags)}, 200, {'Access-Control-Allow-Origin': '*'}
     post = get
@@ -43,7 +43,7 @@ class CoNavigate(Resource):
         { 'Access-Control-Allow-Origin': '*', \
           'Access-Control-Allow-Methods' : 'PUT,GET' }
 
-api.add_resource(RawCall,'/search/')
+api.add_resource(RawSearch,'/search')
 api.add_resource(CoNavigate, '/<string:type>/<string:id>')
 
 if __name__ == '__main__':
