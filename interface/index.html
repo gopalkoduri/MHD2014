@@ -13,6 +13,7 @@
     $(document).ready(function(){
       $("button").click(function(){
         $("div.landing_ribbon").animate({top:'0px'});
+        $("div.landing_ribbon").animate({right:'-430px'});
         document.getElementById("title").className = "title_top";
         document.getElementById("landing-background").className = "disabled";
         $("#progressbar").progressbar("option", "value", 0);
