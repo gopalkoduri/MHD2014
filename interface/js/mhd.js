@@ -59,5 +59,3 @@ build_gui = function(data) {
         }
     });
 };
-
-    

@@ -3,13 +3,18 @@ body.landing{
     background-image:  url(/interface/images/port.jpg);
     background-size:   cover;
     background-repeat: no-repeat;
+    transition: background 300ms ease-in 200ms;
+}
+
+body.landing_top{
+    background-color: #fff;
 }
 
 #landing_wrapper {
     width: auto;
 }
 
-#title{
+.title{
     position: absolute;
     top: 0px;
     left: 20px;
@@ -22,7 +27,17 @@ body.landing{
     border-bottom-left-radius: 10px;
 }
 
-#landing_ribbon {
+.title_top{
+    position: absolute;
+    top: 0px;
+    left: 20px;
+    font-weight: bold;
+    font-family: Cantarell; Trebuchet MS;
+    font-size:34pt;
+    z-index: 1;
+}
+
+.landing_ribbon {
     position: absolute;
     top: 40%;
     margin-left: auto;
