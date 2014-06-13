@@ -80,4 +80,5 @@ div#progressbar {
     width:100%;
     height: 3px;
     background-color: #CDF;
+    z-index: 5;
 }
