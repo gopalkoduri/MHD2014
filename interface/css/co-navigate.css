@@ -69,3 +69,14 @@ div.photo {
 div.photo_container{
     width: 600px;
 }
+
+div#progressbar {
+    position:fixed;
+    display:block;
+    top 0px;
+    left 0px;
+    right: 0px;
+    width:100%;
+    height: 3px;
+    background-color: #CDF;
+}

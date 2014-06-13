@@ -78,4 +78,7 @@ var build_gui = function(data) {
             $("#sound_container").append(make_embed_sound(element));
         }
     });
+    if ($("#progressbar").progressbar("option", "value") < 90) {
+        $("#progressbar").progressbar("option", "value", 95);
+    }
 };
