@@ -42,12 +42,6 @@ div.sound {
     z-index: 0;
 }
 
-div.photo {
-    position: relative;
-    z-index: 0;
-    border: red 1px solid; !important
-}
-
 div.size1, div.size2 {
     width: 350px;
     height: 350px;
@@ -64,12 +58,17 @@ div.size4 {
 }
 
 .click {
-    position:absolute;
     top: 10px;
     left:10px;
     opacity:0.5;
+    z-index: 10;
+}
+
+.click:hover {
+    opacity: 0.9;
 }
 div.image {
     opacity:1;
     position:relative;
+    display:inline-block;
 }
