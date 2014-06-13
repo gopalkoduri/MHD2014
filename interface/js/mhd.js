@@ -1,15 +1,15 @@
 var current_elements = {images:[], sounds:[]}
 make_embed_sound = function(sound) {
     return "<div class=\"sound\" " + "id=\"" + sound.id + "\">" +
-        "<img src=\"/interface/images/thumbsup-small.png\" class=\"click\" onclick=\"click_element(" +sound.id + ")\"></div>" +
-           "<iframe frameborder=\"0\" scrolling=\"no\" src=\"" +
+        "<img src=\"/interface/images/thumbsup-small.png\" class=\"click\" onclick=\"click_element(" +sound.id + ")\" />" +
+           "<iframe class=\"content\" frameborder=\"0\" scrolling=\"no\" src=\"" +
            sound.embed_url + "\" width=\"481\" height=\"86\"></iframe></div>";
 };
 
 make_embed_image = function(image) {
     return "<div class=\"image\" " + " id=\"" +image.id + "\">" +
-        "<img src=\"/interface/images/thumbsup-small.png\" class=\"click\" onclick=\"click_element(" + image.id + ")\"></div>" +
-        "<img src=\"" + image.embed_url+ "\"></div>";
+        "<img src=\"/interface/images/thumbsup-small.png\" class=\"click\" onclick=\"click_element(" + image.id + ")\" />" +
+        "<img class=\"content\" src=\"" + image.embed_url+ "\" /></div>";
 }
 
 click_element = function(target) {
