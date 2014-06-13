@@ -18,9 +18,10 @@ def flickr_api_get_image_list(tags):
             method = "flickr.photos.search",
             api_key = flickr_token,
             tag_mode = "all",
-            tags = tags.replace(' ',','),
+            text = tags,
             format = "json",
-            per_page = 25
+            per_page = 25,
+            sort = 'relevance'
             )
     return _to_json(requests.get(flickr_url, params = payload).text)["photos"]["photo"]
 
@@ -29,7 +30,7 @@ def flickr_api_get_image_info(photo_id):
             method = "flickr.photos.getInfo",
             api_key = flickr_token,
             photo_id = photo_id,
-            format = "json",
+            format = "json"
             )
     text = requests.get(flickr_url, params = payload).text
     return _to_json(text)["photo"]
