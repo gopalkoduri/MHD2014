@@ -10,34 +10,15 @@
 
 <body>
 
-<div id="wrapper">
-    <form id="photo-browser" class="pure-form">
-        <div id="photo_container" class="js-isotope inner"  data-isotope-options='{ "itemSelector": ".photo",
-        "layoutMode": "masonry" }'>
-            <div class="photo size1">
-                hello
-                <button type="submit" name="songid" value="<songid>" class="invisible">
-                    <div class='click'/>
-                </button>
-            </div>
-
-            <div class="photo size2"> hello2 </div>
-            <div class="photo size3"> hello3 </div>
-            <div class="photo size4"> hello4 </div>
-            <div class="photo size3"> hello5 </div>
-            <div class="photo size4"> hello6 </div>
-            <div class="photo size1"> hello7 </div>
-            <div class="photo size2"> hello8 </div>
-        </div>
-    </form>
-    <form id="sound_container" class="pure-form">
+<div class="container">
+    <form class="right">
             <!--<div id="sound_container" class="js-isotope inner"  data-isotope-options='{ "itemSelector": ".sound",-->
             <!--"layoutMode": "vertical", "vertical": {rowHeight: 96} }'>-->
                 <div class="sound">
                     <iframe frameborder="0" scrolling="no" src="http://www.freesound.org/embed/sound/iframe/194170/simple/medium/"
                             width="481" height="86"></iframe>
                     <button type="submit" name="songid" value="<songid>" class="invisible">
-                        <img class='vote' src="/interface/images/thumbsup-small.png" />
+                        <img width="32" src="/interface/images/thumbsup-small.png" />
                     </button>
                 </div>
 
@@ -55,6 +36,27 @@
                 </div>
             <!--</div>-->
     </form>
+
+    <form class="left">
+        <div class="js-isotope inner"  data-isotope-options='{ "itemSelector": ".photo",
+        "layoutMode": "masonry" }'>
+            <div class="photo size1">
+                hello
+                <button type="submit" name="songid" value="<songid>" class="invisible">
+                    <img width="32" src="/interface/images/thumbsup-small.png" />
+                </button>
+            </div>
+
+            <div class="photo size2"> hello2 </div>
+            <div class="photo size3"> hello3 </div>
+            <div class="photo size4"> hello4 </div>
+            <div class="photo size3"> hello5 </div>
+            <div class="photo size4"> hello6 </div>
+            <div class="photo size1"> hello7 </div>
+            <div class="photo size2"> hello8 </div>
+        </div>
+    </form>
+
 </div>
 
 </body>
