@@ -10,9 +10,7 @@ api = Api(app)
 
 class RawSearch(Resource):
     def get(self):
-        tags = request.form.keys()[0]
-        print tags
-        print [image["id"] for image in get_image(tags)]
+        tags = request.form.keys()[0].strip()
         return {'sounds': get_sound(tags), 'images': get_image(tags)}, 200, {'Access-Control-Allow-Origin': '*'}
     post = get
 

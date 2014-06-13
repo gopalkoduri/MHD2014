@@ -1,7 +1,7 @@
 var current_elements = {images:[], sounds:[]}
 make_embed_sound = function(sound) {
     return "<div class=\"sound\" " + "id=\"" + sound.id + "\">" +
-        "<img width=\"32\" class=\"invisible\" src=\"/interface/images/thumbsup-small.png\" onclick=\"click_element(" +sound.id + ")\"></div>" +
+        "<img width=\"32\" class=\"invisible\" src=\"/interface/images/thumbsup-small.png\" onclick=\"click_element('s', " +sound.id + ")\" />" +
            "<iframe frameborder=\"0\" scrolling=\"no\" src=\"" +
            sound.embed_url + "\" width=\"481\" height=\"86\"></iframe></div>";
 };
@@ -9,26 +9,20 @@ make_embed_sound = function(sound) {
 make_embed_image = function(image, index) {
     return "<div class=\"photo\" id=" + image.id + ">" +
         "<img width=\"100%\" class=\"size" + index + "\" src=\"" + image.embed_url + "\""+
-        "onclick=\"click_element(" + image.id + ")\"/> </div>";
+        "onclick=\"click_element('p', " + image.id + ")\"/> </div>";
 }
 
-click_element = function(target) {
-    console.log(target);
-    var current_ids = {images: [], sounds: []}
+var click_element = function(type, target) {
+    $("#progressbar").progressbar("option", "value", 0);
+    console.log("getting more things like  " +  target);
+    var current_ids = {images: [], sounds: []};
 
-    var type;
     $.each(current_elements.images, function(index, image) {
         current_ids.images.push(image.id);
-        if (image.id === target) {
-            type = 'p';
-        }
     });
 
     $.each(current_elements.sounds, function(index, sound) {
         current_ids.sounds.push(sound.id);
-        if (sound.id === target) {
-            type = 's';
-        }
     });
 
     $.ajax({
@@ -41,14 +35,14 @@ click_element = function(target) {
         success: build_gui,
         fail: function() { console.log("error getting more sounds and images") }
     });
-}
+};
 
 function shuffle(o){ //v1.0
     for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
     return o;
 };
 
-build_gui = function(data) {
+var build_gui = function(data) {
     console.log(data);
     current_elements = data;
 
